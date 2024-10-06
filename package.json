@@ -1,0 +1,22 @@
+{
+  "name": "dom-js",
+  "version": "1.0.0",
+  "description": "The parser of document object model with javascript.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node ./test/index.js",
+    "pretty": "prettier . --write --config .prettierrc.js",
+    "build": "node .esbuild.js"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "shinich39 <shinich39@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.23.0",
+    "js-beautify": "^1.15.1",
+    "prettier": "^3.3.3"
+  }
+}

@@ -35,7 +35,10 @@ var dom = (() => {
     return str.replace(/\r\n/g, "\n");
   }
   function normalizeTag(str) {
-    return str.replace(/^\<|[\s!?/]*\>$/g, "").replace(/\s+/g, " ").trim();
+    return str.replace(/^\</, "").replace(/([^\<][!?/])?\>$/, "").replace(/\s+/g, " ").trim();
+  }
+  function isText(node) {
+    return node.tag === null;
   }
   function findLastIndex(arr, func) {
     for (let i = arr.length - 1; i >= 0; i--) {
@@ -47,6 +50,9 @@ var dom = (() => {
   }
   function encodeFunc(str) {
     return encodeURIComponent(str);
+  }
+  function decodeFunc(str) {
+    return decodeURIComponent(str);
   }
   function escapeFunc(str) {
     for (let i = 0; i < ENTITIES.length; i++) {
@@ -75,17 +81,18 @@ var dom = (() => {
       return `${args[1]}${escapeFunc(args[2])}${args[3]}`;
     });
   }
-  function encodeProperties(str) {
+  function encodeAttributes(str) {
     function func(...args) {
       return `=${encodeFunc(args[1])} `;
     }
-    return str.replace(/\="([^"]*?)"/g, func).replace(/\='([^']*?)'/g, func);
+    return str.replace(/\='([^'>]*?)'/g, func).replace(/\="([^">]*?)"/g, func);
   }
   function parseTag(str) {
     let arr = normalizeTag(str).split(/\s/);
     let result = {};
     result.tag = arr[0] || "";
     result.closer = null;
+    result.content = null;
     result.attributes = {};
     result.children = [];
     result.isClosing = /^\//.test(result.tag);
@@ -95,7 +102,7 @@ var dom = (() => {
       let [key, value] = arr[i].split("=");
       if (key.length > 0) {
         if (typeof value === "string" && value.length > 0) {
-          result.attributes[key] = decodeURIComponent(value);
+          result.attributes[key] = decodeFunc(value);
         } else {
           result.attributes[key] = true;
         }
@@ -104,7 +111,7 @@ var dom = (() => {
     return result;
   }
   function strToObj(str) {
-    str = encodeProperties(
+    str = encodeAttributes(
       encodeContents(
         encodeScripts(
           convertComments(
@@ -115,13 +122,22 @@ var dom = (() => {
         )
       )
     );
-    let offset = 0, re = /<[^>]*?>/g, match, result = [], nodes = [];
+    let offset = 0, re = /<[^>]*?>/g, match, result = [], nodes = [], obj;
     while (match = re.exec(str)) {
       let content = str.substring(offset, match.index).trim();
       if (content.length > 0) {
-        result.push(unescapeFunc(content));
+        obj = {
+          // isClosed: true,
+          // isClosing: false,
+          tag: null,
+          closer: null,
+          content: unescapeFunc(content),
+          attributes: {},
+          children: []
+        };
+        result.push(obj);
       }
-      let obj = parseTag(match[0]);
+      obj = parseTag(match[0]);
       if (!obj.isClosing) {
         result.push(obj);
         nodes.push(obj);
@@ -134,8 +150,8 @@ var dom = (() => {
           result[i].children = result.splice(i + 1, result.length - i + 1);
           if (["script", "!--"].indexOf(result[i].tag) > -1) {
             for (let j = 0; j < result[i].children.length; j++) {
-              if (typeof result[i].children[j] === "string") {
-                result[i].children[j] = decodeURIComponent(result[i].children[j]);
+              if (isText(result[i].children[j])) {
+                result[i].children[j].content = decodeFunc(result[i].children[j].content);
               }
             }
           }
@@ -162,7 +178,7 @@ var dom = (() => {
     let result = "";
     for (const [k, v] of Object.entries(obj)) {
       if (typeof v === "string") {
-        result += ` ${k}="${v}"`;
+        result += ` ${k}="${escapeFunc(v)}"`;
       } else if (v === true) {
         result += ` ${k}`;
       }
@@ -170,23 +186,28 @@ var dom = (() => {
     return result;
   }
   function objToStr(obj) {
-    if (typeof obj === "string") {
-      return obj;
-    }
-    const { tag, closer, attributes, children } = obj;
-    let result = `<${tag}${objToAttr(attributes || {})}`;
-    if (typeof closer !== "string") {
-      result += ">";
-    }
-    if (Array.isArray(children)) {
-      for (const child of children) {
-        result += objToStr(child);
+    const { tag, closer, attributes, content, children } = obj;
+    let result = "";
+    if (typeof tag === "string") {
+      result += `<${tag}`;
+      if (typeof attributes === "object") {
+        result += objToAttr(attributes);
       }
-    }
-    if (typeof closer === "string") {
-      result += `${closer}>`;
-    } else {
-      result += `</${tag}>`;
+      if (typeof closer !== "string") {
+        result += ">";
+      }
+      if (Array.isArray(children)) {
+        for (const child of children) {
+          result += objToStr(child);
+        }
+      }
+      if (typeof closer === "string") {
+        result += `${closer}>`;
+      } else {
+        result += `</${tag}>`;
+      }
+    } else if (typeof content === "string") {
+      result = content;
     }
     return result;
   }

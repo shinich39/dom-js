@@ -199,7 +199,7 @@ function strToObj(str) {
   let offset = 0,
       re = /<[^>]*?>/g,
       match,
-      result = [],
+      children = [],
       nodes = [],
       obj;
 
@@ -208,7 +208,7 @@ function strToObj(str) {
     let content = str.substring(offset, match.index).trim();
     if (content.length > 0) {
       // Deprecated: Convert to node
-      // result.push(unescapeFunc(content));
+      // children.push(unescapeFunc(content));
 
       obj = {
         // isClosed: true,
@@ -220,31 +220,31 @@ function strToObj(str) {
         children: [],
       }
 
-      result.push(obj);
+      children.push(obj);
     }
 
     // Read tag
     obj = parseTag(match[0]);
     if (!obj.isClosing) {
       // Tag is opening tag
-      result.push(obj);
+      children.push(obj);
       nodes.push(obj);
     } else {
       // Tag is closing tag
       // Add children to tag
-      let i = findLastIndex(result, function(item) {
+      let i = findLastIndex(children, function(item) {
         return !item.isClosed && item.tag === obj.tag;
       });
 
       if (i > -1) {
-        result[i].isClosed = true;
-        result[i].children = result.splice(i+1, result.length-i+1);
+        children[i].isClosed = true;
+        children[i].children = children.splice(i+1, children.length-i+1);
 
         // Decode contents of the scripts and comments
-        if (["script", "!--"].indexOf(result[i].tag) > -1) {
-          for (let j = 0; j < result[i].children.length; j++) {
-            if (isText(result[i].children[j])) {
-              result[i].children[j].content = decodeFunc(result[i].children[j].content);
+        if (["script", "!--"].indexOf(children[i].tag) > -1) {
+          for (let j = 0; j < children[i].children.length; j++) {
+            if (isText(children[i].children[j])) {
+              children[i].children[j].content = decodeFunc(children[i].children[j].content);
             }
           }
         }
@@ -279,7 +279,13 @@ function strToObj(str) {
     delete node.isClosing;
   }
 
-  return result;
+  return {
+    tag: null,
+    closer: null,
+    content: null,
+    attributes: {},
+    children: children,
+  };
 }
 
 function objToAttr(obj) {
@@ -324,6 +330,13 @@ function objToStr(obj) {
   } // TextContent
   else if (typeof content === "string") {
     result = content;
+  } // Root Node
+  else {
+    if (Array.isArray(children)) {
+      for (const child of children) {
+        result += objToStr(child);
+      }
+    }
   }
   
   return result;

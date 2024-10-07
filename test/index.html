@@ -55,7 +55,7 @@
     LINE 3 =&gt; 
 
     <!-- Text attribute escape -->
-    <p attr='a href="gg"'>Link</p>
+    <p id="p1" attr='"Esacaped text"'>Link</p>
 
     <!-- Test attributes -->
     <img src=""alt=""control>
@@ -65,12 +65,10 @@
     <!-- Test scripts -->
     <script src="../dist/module.js"></script>
     <script>
-      var { test, sum } = module;
-      // var res = test(sum).exec(1, 2);
-      // document.getElementById("result").innerHTML = res;
-
       console.log(1 < 2);
       console.log(1 > 2);
+
+      document.getElementById("p1").innerHTML = document.getElementById("p1").getAttribute("attr");
     </script>
   </body>
 </html>

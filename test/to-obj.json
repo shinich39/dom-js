@@ -1,411 +1,418 @@
-[
-  {
-    "tag": "!doctype",
-    "closer": "",
-    "content": null,
-    "attributes": {
-      "html": true
-    },
-    "children": []
-  },
-  {
-    "tag": "html",
-    "closer": null,
-    "content": null,
-    "attributes": {},
-    "children": [
-      {
-        "tag": "head",
-        "closer": null,
-        "content": null,
-        "attributes": {},
-        "children": [
-          {
-            "tag": "meta",
-            "closer": " /",
-            "content": null,
-            "attributes": {
-              "charset": "utf-8"
-            },
-            "children": []
-          },
-          {
-            "tag": "meta",
-            "closer": " /",
-            "content": null,
-            "attributes": {
-              "name": "viewport",
-              "content": "width=device-width, initial-scale=1.0"
-            },
-            "children": []
-          },
-          {
-            "tag": "title",
-            "closer": null,
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": "index.html",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "style",
-            "closer": null,
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": "html,\n      body {\n        width: 100%;\n        height: 100%;\n        margin: 0;\n        padding: 0;\n      }\n      body {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n      }",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          }
-        ]
+{
+  "tag": null,
+  "closer": null,
+  "content": null,
+  "attributes": {},
+  "children": [
+    {
+      "tag": "!doctype",
+      "closer": "",
+      "content": null,
+      "attributes": {
+        "html": true
       },
-      {
-        "tag": "body",
-        "closer": null,
-        "content": null,
-        "attributes": {},
-        "children": [
-          {
-            "tag": "!--",
-            "closer": "--",
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": " Test comment ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "!--",
-            "closer": "--",
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": "\n      <div id=\"a1\">\n        <div id=\"a2\">\n          <div id=\"a3\"></div>\n        </div>\n      </div> \n    ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "!--",
-            "closer": "--",
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": " test node ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "div",
-            "closer": null,
-            "content": null,
-            "attributes": {
-              "id": "test-id",
-              "class": "test-class"
+      "children": []
+    },
+    {
+      "tag": "html",
+      "closer": null,
+      "content": null,
+      "attributes": {},
+      "children": [
+        {
+          "tag": "head",
+          "closer": null,
+          "content": null,
+          "attributes": {},
+          "children": [
+            {
+              "tag": "meta",
+              "closer": " /",
+              "content": null,
+              "attributes": {
+                "charset": "utf-8"
+              },
+              "children": []
             },
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": "LINE 1",
-                "attributes": {},
-                "children": []
+            {
+              "tag": "meta",
+              "closer": " /",
+              "content": null,
+              "attributes": {
+                "name": "viewport",
+                "content": "width=device-width, initial-scale=1.0"
               },
-              {
-                "tag": "p",
-                "closer": null,
-                "content": null,
-                "attributes": {},
-                "children": [
-                  {
-                    "tag": null,
-                    "closer": null,
-                    "content": "LINE 2",
-                    "attributes": {},
-                    "children": []
-                  }
-                ]
+              "children": []
+            },
+            {
+              "tag": "title",
+              "closer": null,
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "index.html",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "style",
+              "closer": null,
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "html,\n      body {\n        width: 100%;\n        height: 100%;\n        margin: 0;\n        padding: 0;\n      }\n      body {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n      }",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "body",
+          "closer": null,
+          "content": null,
+          "attributes": {},
+          "children": [
+            {
+              "tag": "!--",
+              "closer": "--",
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": " Test comment ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "!--",
+              "closer": "--",
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "\n      <div id=\"a1\">\n        <div id=\"a2\">\n          <div id=\"a3\"></div>\n        </div>\n      </div> \n    ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "!--",
+              "closer": "--",
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": " test node ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "div",
+              "closer": null,
+              "content": null,
+              "attributes": {
+                "id": "test-id",
+                "class": "test-class"
               },
-              {
-                "tag": null,
-                "closer": null,
-                "content": "LINE 3",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "!--",
-            "closer": "--",
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": " Test image ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "div",
-            "closer": null,
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": "!--",
-                "closer": "--",
-                "content": null,
-                "attributes": {},
-                "children": [
-                  {
-                    "tag": null,
-                    "closer": null,
-                    "content": " Img without closing tag ",
-                    "attributes": {},
-                    "children": []
-                  }
-                ]
-              },
-              {
-                "tag": "img",
-                "closer": " /",
-                "content": null,
-                "attributes": {
-                  "src": "http://"
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "LINE 1",
+                  "attributes": {},
+                  "children": []
                 },
-                "children": []
-              },
-              {
-                "tag": "!--",
-                "closer": "--",
-                "content": null,
-                "attributes": {},
-                "children": [
-                  {
-                    "tag": null,
-                    "closer": null,
-                    "content": " Img with closing tag ",
-                    "attributes": {},
-                    "children": []
-                  }
-                ]
-              },
-              {
-                "tag": "img",
-                "closer": " /",
-                "content": null,
-                "attributes": {
-                  "src": "http://"
+                {
+                  "tag": "p",
+                  "closer": null,
+                  "content": null,
+                  "attributes": {},
+                  "children": [
+                    {
+                      "tag": null,
+                      "closer": null,
+                      "content": "LINE 2",
+                      "attributes": {},
+                      "children": []
+                    }
+                  ]
                 },
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "!--",
-            "closer": "--",
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": " Test escape ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": null,
-            "closer": null,
-            "content": "LINE 1 =>",
-            "attributes": {},
-            "children": []
-          },
-          {
-            "tag": "br",
-            "closer": " /",
-            "content": null,
-            "attributes": {},
-            "children": []
-          },
-          {
-            "tag": null,
-            "closer": null,
-            "content": "LINE 2",
-            "attributes": {},
-            "children": []
-          },
-          {
-            "tag": "=",
-            "closer": " /",
-            "content": null,
-            "attributes": {
-              "<br": true
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "LINE 3",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
             },
-            "children": []
-          },
-          {
-            "tag": null,
-            "closer": null,
-            "content": "LINE 3 =&gt;",
-            "attributes": {},
-            "children": []
-          },
-          {
-            "tag": "!--",
-            "closer": "--",
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": " Text attribute escape ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "closer": null,
-            "content": null,
-            "attributes": {
-              "attr": "a href=\"gg\""
+            {
+              "tag": "!--",
+              "closer": "--",
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": " Test image ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
             },
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": "Link",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "!--",
-            "closer": "--",
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": " Test attributes ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "img",
-            "closer": " /",
-            "content": null,
-            "attributes": {
-              "src": true,
-              "alt": true,
-              "control": true
+            {
+              "tag": "div",
+              "closer": null,
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": "!--",
+                  "closer": "--",
+                  "content": null,
+                  "attributes": {},
+                  "children": [
+                    {
+                      "tag": null,
+                      "closer": null,
+                      "content": " Img without closing tag ",
+                      "attributes": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "tag": "img",
+                  "closer": " /",
+                  "content": null,
+                  "attributes": {
+                    "src": "http://"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "!--",
+                  "closer": "--",
+                  "content": null,
+                  "attributes": {},
+                  "children": [
+                    {
+                      "tag": null,
+                      "closer": null,
+                      "content": " Img with closing tag ",
+                      "attributes": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "tag": "img",
+                  "closer": " /",
+                  "content": null,
+                  "attributes": {
+                    "src": "http://"
+                  },
+                  "children": []
+                }
+              ]
             },
-            "children": []
-          },
-          {
-            "tag": "img",
-            "closer": " /",
-            "content": null,
-            "attributes": {
-              "src": true,
-              "alt": true,
-              "control": true
+            {
+              "tag": "!--",
+              "closer": "--",
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": " Test escape ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
             },
-            "children": []
-          },
-          {
-            "tag": "img",
-            "closer": " /",
-            "content": null,
-            "attributes": {
-              "src": true,
-              "alt": true,
-              "control": true
+            {
+              "tag": null,
+              "closer": null,
+              "content": "LINE 1 =>",
+              "attributes": {},
+              "children": []
             },
-            "children": []
-          },
-          {
-            "tag": "!--",
-            "closer": "--",
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": " Test scripts ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          },
-          {
-            "tag": "script",
-            "closer": null,
-            "content": null,
-            "attributes": {
-              "src": "../dist/module.js"
+            {
+              "tag": "br",
+              "closer": " /",
+              "content": null,
+              "attributes": {},
+              "children": []
             },
-            "children": []
-          },
-          {
-            "tag": "script",
-            "closer": null,
-            "content": null,
-            "attributes": {},
-            "children": [
-              {
-                "tag": null,
-                "closer": null,
-                "content": "\n      var { test, sum } = module;\n      // var res = test(sum).exec(1, 2);\n      // document.getElementById(\"result\").innerHTML = res;\n\n      console.log(1 < 2);\n      console.log(1 > 2);\n    ",
-                "attributes": {},
-                "children": []
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+            {
+              "tag": null,
+              "closer": null,
+              "content": "LINE 2",
+              "attributes": {},
+              "children": []
+            },
+            {
+              "tag": "=",
+              "closer": " /",
+              "content": null,
+              "attributes": {
+                "<br": true
+              },
+              "children": []
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "LINE 3 =&gt;",
+              "attributes": {},
+              "children": []
+            },
+            {
+              "tag": "!--",
+              "closer": "--",
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": " Text attribute escape ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "p",
+              "closer": null,
+              "content": null,
+              "attributes": {
+                "id": "p1",
+                "attr": "\"Esacaped text\""
+              },
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "Link",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "!--",
+              "closer": "--",
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": " Test attributes ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "img",
+              "closer": " /",
+              "content": null,
+              "attributes": {
+                "src": true,
+                "alt": true,
+                "control": true
+              },
+              "children": []
+            },
+            {
+              "tag": "img",
+              "closer": " /",
+              "content": null,
+              "attributes": {
+                "src": true,
+                "alt": true,
+                "control": true
+              },
+              "children": []
+            },
+            {
+              "tag": "img",
+              "closer": " /",
+              "content": null,
+              "attributes": {
+                "src": true,
+                "alt": true,
+                "control": true
+              },
+              "children": []
+            },
+            {
+              "tag": "!--",
+              "closer": "--",
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": " Test scripts ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "script",
+              "closer": null,
+              "content": null,
+              "attributes": {
+                "src": "../dist/module.js"
+              },
+              "children": []
+            },
+            {
+              "tag": "script",
+              "closer": null,
+              "content": null,
+              "attributes": {},
+              "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "\n      console.log(1 < 2);\n      console.log(1 > 2);\n\n      document.getElementById(\"p1\").innerHTML = document.getElementById(\"p1\").getAttribute(\"attr\");\n    ",
+                  "attributes": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

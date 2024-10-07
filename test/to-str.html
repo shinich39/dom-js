@@ -32,18 +32,13 @@
   <div id="test-id" class="test-class">LINE 1<p>LINE 2</p>LINE 3</div><!-- Test image -->
   <div><!-- Img without closing tag --><img src="http://" /><!-- Img with closing tag --><img src="http://" /></div><!-- Test escape -->LINE 1 =><br />LINE 2
   <= <br />LINE 3 =&gt;<!-- Text attribute escape -->
-  <p attr="a href=&quot;gg&quot;">Link</p><!-- Test attributes --><img src alt control /><img src alt control /><img src alt control /><!-- Test scripts -->
+  <p id="p1" attr="&quot;Esacaped text&quot;">Link</p><!-- Test attributes --><img src alt control /><img src alt control /><img src alt control /><!-- Test scripts -->
   <script src="../dist/module.js"></script>
   <script>
-    var {
-      test,
-      sum
-    } = module;
-    // var res = test(sum).exec(1, 2);
-    // document.getElementById("result").innerHTML = res;
-
     console.log(1 < 2);
     console.log(1 > 2);
+
+    document.getElementById("p1").innerHTML = document.getElementById("p1").getAttribute("attr");
   </script>
 </body>
 

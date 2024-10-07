@@ -21,22 +21,28 @@ const html = `
 </html>`;
 
 const obj = toObj(html);
-// [
-//   {
-//     tag: '!DOCTYPE',
-//     closer: '',
-//     content: null,
-//     attributes: { html: true },
-//     children: []
-//   },
-//   {
-//     tag: 'html',
-//     closer: null,
-//     content: null,
-//     attributes: {},
-//     children: [ [Object], [Object] ]
-//   }
-// ]
+// {
+//   tag: null,
+//   closer: null,
+//   content: null,
+//   attributes: {},
+//   children: [
+//     {
+//       tag: '!DOCTYPE',
+//       closer: '',
+//       content: null,
+//       attributes: [Object],
+//       children: []
+//     },
+//     {
+//       tag: 'html',
+//       closer: null,
+//       content: null,
+//       attributes: {},
+//       children: [Array]
+//     }
+//   ]
+// }
 
 const str = toStr(obj);
 // <!DOCTYPE html><html><head><meta charset="utf-8" /><title>index.html</title></head><body>TEXT<p>BODY</p></body></html>

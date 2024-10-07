@@ -97,7 +97,7 @@ function strToObj(str) {
       )
     )
   );
-  let offset = 0, re = /<[^>]*?>/g, match, result = [], nodes = [], obj;
+  let offset = 0, re = /<[^>]*?>/g, match, children = [], nodes = [], obj;
   while (match = re.exec(str)) {
     let content = str.substring(offset, match.index).trim();
     if (content.length > 0) {
@@ -110,23 +110,23 @@ function strToObj(str) {
         attributes: {},
         children: []
       };
-      result.push(obj);
+      children.push(obj);
     }
     obj = parseTag(match[0]);
     if (!obj.isClosing) {
-      result.push(obj);
+      children.push(obj);
       nodes.push(obj);
     } else {
-      let i = findLastIndex(result, function(item) {
+      let i = findLastIndex(children, function(item) {
         return !item.isClosed && item.tag === obj.tag;
       });
       if (i > -1) {
-        result[i].isClosed = true;
-        result[i].children = result.splice(i + 1, result.length - i + 1);
-        if (["script", "!--"].indexOf(result[i].tag) > -1) {
-          for (let j = 0; j < result[i].children.length; j++) {
-            if (isText(result[i].children[j])) {
-              result[i].children[j].content = decodeFunc(result[i].children[j].content);
+        children[i].isClosed = true;
+        children[i].children = children.splice(i + 1, children.length - i + 1);
+        if (["script", "!--"].indexOf(children[i].tag) > -1) {
+          for (let j = 0; j < children[i].children.length; j++) {
+            if (isText(children[i].children[j])) {
+              children[i].children[j].content = decodeFunc(children[i].children[j].content);
             }
           }
         }
@@ -147,7 +147,13 @@ function strToObj(str) {
     delete node.isClosed;
     delete node.isClosing;
   }
-  return result;
+  return {
+    tag: null,
+    closer: null,
+    content: null,
+    attributes: {},
+    children
+  };
 }
 function objToAttr(obj) {
   let result = "";
@@ -183,6 +189,12 @@ function objToStr(obj) {
     }
   } else if (typeof content === "string") {
     result = content;
+  } else {
+    if (Array.isArray(children)) {
+      for (const child of children) {
+        result += objToStr(child);
+      }
+    }
   }
   return result;
 }

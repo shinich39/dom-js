@@ -171,7 +171,7 @@ function parseTag(str) {
     if (key.length > 0) {
       if (typeof value === "string" && value.length > 0) {
         // Escape quotation marks in attribute value
-        result.attributes[key] = escapeFunc(decodeFunc(value));
+        result.attributes[key] = decodeFunc(value);
       } else {
         // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes
         // The values "true" and "false" are not allowed on boolean attributes. To represent a false value, the attribute has to be omitted altogether.
@@ -286,7 +286,7 @@ function objToAttr(obj) {
   let result = "";
   for (const [k, v] of Object.entries(obj)) {
     if (typeof v === "string") {
-      result += ` ${k}="${v}"`;
+      result += ` ${k}="${escapeFunc(v)}"`;
     } else if (v === true) {
       result += ` ${k}`;
     }

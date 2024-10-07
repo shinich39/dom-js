@@ -305,7 +305,7 @@
             "closer": null,
             "content": null,
             "attributes": {
-              "attr": "a href=&quot;gg&quot;"
+              "attr": "a href=\"gg\""
             },
             "children": [
               {

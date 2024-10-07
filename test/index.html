@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>index.html</title>
-    <!-- <link rel="stylesheet" href="./style.css"> -->
     <style>
       html,
       body {
@@ -22,37 +21,48 @@
   </head>
 
   <body>
-    <div id="result">
-      LINE 1 => gt
-      <span>SPAN 1</span>
-      LINE 2 =&gt; greater than 
-      <span>SPAN 2</span>
+
+    <!-- Test comment -->
+    <!--
+      <div id="a1">
+        <div id="a2">
+          <div id="a3"></div>
+        </div>
+      </div> 
+    -->
+
+    <!-- test node -->
+    <div id="test-id" class="test-class">
+      LINE 1
+      <p>LINE 2</p>
       LINE 3
+    </div>
+
+    <!-- Test image -->
+    <div>
+      <!-- Img without closing tag -->
       <img src="http://">
+
+      <!-- Img with closing tag -->
       <img src="http://" />
-      LINE 4
-      <!-- 
-        => function( => ff) <=
-      -->
     </div>
 
-    <div id="d1" role="gg"test='11'quotes=GG guotes2=AA>
-      <div id="d2">
-        <div id="d3"></div>
-      </div>
-    </div>
+    <!-- Test escape -->
+    LINE 1 =>
+    <br>
+    LINE 2 <=
+    <br />
+    LINE 3 =&gt; 
 
-    <img id="img1" src="" alt=""/>
-    <img id="img2"src=""alt="">
-    <img id="img3"src="" alt="" control>
-    <img id="img4" src alt control>
+    <!-- Text attribute escape -->
+    <p attr='a href="gg"'>Link</p>
 
-    <!-- <div id="a1">
-      <div id="a2">
-        <div id="a3"></div>
-      </div>
-    </div> -->
+    <!-- Test attributes -->
+    <img src=""alt=""control>
+    <img src alt control="">
+    <img src alt control>
 
+    <!-- Test scripts -->
     <script src="../dist/module.js"></script>
     <script>
       var { test, sum } = module;

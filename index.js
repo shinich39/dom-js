@@ -40,9 +40,18 @@ function normalizeLineBreakers(str) {
 }
 
 function normalizeTag(str) {
-  return str.replace(/^\<|[\s!?/]*\>$/g, "")
+  return str.replace(/^\</, "")
+            .replace(/([^\<][!?/])?\>$/, "")
             .replace(/\s+/g, " ")
             .trim();
+}
+
+function isText(node) {
+  return node.tag === null;
+}
+
+function isNode(node) {
+  return typeof node.tag === "string";
 }
 
 function findLast(arr, func) {
@@ -60,6 +69,12 @@ function findLastIndex(arr, func) {
     }
   }
   return -1;
+}
+
+function fixedEncodeURIComponent(str) {
+  return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
+    return "%" + c.charCodeAt(0).toString(16);
+  });
 }
 
 function encodeFunc(str) {
@@ -82,6 +97,11 @@ function unescapeFunc(str) {
     str = str.replace(new RegExp(ENTITIES[i][1], "g"), ENTITIES[i][0]);
   }
   return str;
+}
+
+function escapeQuotes(str) {
+  return str.replace(/"/g, "&quot;")
+            .replace(/'/g, "&apos;");
 }
 
 function convertComments(str) {
@@ -126,21 +146,22 @@ function decodeContents(str) {
   });
 }
 
-function encodeProperties(str) {
+function encodeAttributes(str) {
   function func(...args) {
     return `=${encodeFunc(args[1])} `;
   }
-  return str.replace(/\="([^"]*?)"/g, func)
-            .replace(/\='([^']*?)'/g, func)
+  return str.replace(/\='([^'>]*?)'/g, func)
+            .replace(/\="([^">]*?)"/g, func)
 }
 
 function parseTag(str) {
   let arr = normalizeTag(str).split(/\s/);
   let result = {};
-  result.tag =  arr[0] || "";
-  result.closer =  null;
-  result.attributes =  {};
-  result.children =  [];
+  result.tag = arr[0] || "";
+  result.closer = null;
+  result.content = null;
+  result.attributes = {};
+  result.children = [];
   result.isClosing = /^\//.test(result.tag);
   result.isClosed = result.isClosing;
   result.tag = result.tag.replace(/^\//, "");
@@ -149,7 +170,8 @@ function parseTag(str) {
     let [key, value] = arr[i].split("=");
     if (key.length > 0) {
       if (typeof value === "string" && value.length > 0) {
-        result.attributes[key] = decodeURIComponent(value);
+        // Escape quotation marks in attribute value
+        result.attributes[key] = escapeFunc(decodeFunc(value));
       } else {
         // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes
         // The values "true" and "false" are not allowed on boolean attributes. To represent a false value, the attribute has to be omitted altogether.
@@ -162,7 +184,7 @@ function parseTag(str) {
 }
 
 function strToObj(str) {
-  str = encodeProperties(
+  str = encodeAttributes(
     encodeContents(
       encodeScripts(
         convertComments(
@@ -178,18 +200,31 @@ function strToObj(str) {
       re = /<[^>]*?>/g,
       match,
       result = [],
-      nodes = [];
+      nodes = [],
+      obj;
 
   while(match = re.exec(str)) {
     // Read content
     let content = str.substring(offset, match.index).trim();
     if (content.length > 0) {
-      result.push(unescapeFunc(content));
-      // result.push(content);
+      // Deprecated: Convert to node
+      // result.push(unescapeFunc(content));
+
+      obj = {
+        // isClosed: true,
+        // isClosing: false,
+        tag: null,
+        closer: null,
+        content: unescapeFunc(content),
+        attributes: {},
+        children: [],
+      }
+
+      result.push(obj);
     }
 
     // Read tag
-    let obj = parseTag(match[0]);
+    obj = parseTag(match[0]);
     if (!obj.isClosing) {
       // Tag is opening tag
       result.push(obj);
@@ -208,8 +243,8 @@ function strToObj(str) {
         // Decode contents of the scripts and comments
         if (["script", "!--"].indexOf(result[i].tag) > -1) {
           for (let j = 0; j < result[i].children.length; j++) {
-            if (typeof result[i].children[j] === "string") {
-              result[i].children[j] = decodeURIComponent(result[i].children[j]);
+            if (isText(result[i].children[j])) {
+              result[i].children[j].content = decodeFunc(result[i].children[j].content);
             }
           }
         }
@@ -239,7 +274,7 @@ function strToObj(str) {
       node.closer = " /";
     }
 
-    // Remove unused properties
+    // Remove unused attributes
     delete node.isClosed;
     delete node.isClosing;
   }
@@ -260,28 +295,37 @@ function objToAttr(obj) {
 }
 
 function objToStr(obj) {
-  if (typeof obj === "string") {
-    return obj;
-  }
-  const { tag, closer, attributes, children } = obj;
-  let result = `<${tag}${objToAttr(attributes || {})}`;
+  const { tag, closer, attributes, content, children } = obj;
+  let result = "";
+  
+  // Node
+  if (typeof tag === "string") {
+    result += `<${tag}`;
 
-  if (typeof closer !== "string") {
-    result += ">";
-  }
-
-  if (Array.isArray(children)) {
-    for (const child of children) {
-      result += objToStr(child);
+    if (typeof attributes === "object") {
+      result += objToAttr(attributes);
     }
-  }
 
-  if (typeof closer === "string") {
-    result += `${closer}>`;
-  } else {
-    result += `</${tag}>`;
+    if (typeof closer !== "string") {
+      result += ">";
+    }
+  
+    if (Array.isArray(children)) {
+      for (const child of children) {
+        result += objToStr(child);
+      }
+    }
+  
+    if (typeof closer === "string") {
+      result += `${closer}>`;
+    } else {
+      result += `</${tag}>`;
+    }
+  } // TextContent
+  else if (typeof content === "string") {
+    result = content;
   }
-
+  
   return result;
 }
 

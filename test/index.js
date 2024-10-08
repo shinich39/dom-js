@@ -9,28 +9,28 @@ function beautifyHTML(str) {
   });
 }
 
-// const html = fs.readFileSync("./test/index.html", "utf-8");
-// const obj = toObj(html);
-// fs.writeFileSync("./test/to-obj.json", JSON.stringify(obj, null, 2), "utf-8");
-// const str = beautifyHTML(toStr(obj));
-// fs.writeFileSync("./test/to-str.html", str, "utf-8");
-
-const html = `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>index.html</title>
-  </head>
-  <body>
-    TEXT
-    <p>BODY</p>
-  </body>
-</html>`;
-
+const html = fs.readFileSync("./test/index.html", "utf-8");
 const obj = toObj(html);
-console.log(obj);
-// console.log(obj[1].children[1]);
+fs.writeFileSync("./test/to-obj.json", JSON.stringify(obj, null, 2), "utf-8");
+const str = beautifyHTML(toStr(obj));
+fs.writeFileSync("./test/to-str.html", str, "utf-8");
 
-const str = toStr(obj);
-console.log(str);
+// const html = `
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <meta charset="utf-8" />
+//     <title>index.html</title>
+//   </head>
+//   <body>
+//     TEXT
+//     <p>BODY</p>
+//   </body>
+// </html>`;
+
+// const obj = toObj(html);
+// console.log(obj);
+// // console.log(obj[1].children[1]);
+
+// const str = toStr(obj);
+// console.log(str);

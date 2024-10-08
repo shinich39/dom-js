@@ -24,8 +24,21 @@ var dom = (() => {
     toObj: () => strToObj,
     toStr: () => objToStr
   });
-  var ENTITIES = [
+  var HTML_ENTITIES = [
     ["&", "&amp;"],
+    [" ", "&nbsp;"],
+    ["<", "&lt;"],
+    [">", "&gt;"],
+    ['"', "&quot;"],
+    ["'", "&apos;"],
+    ["\xA2", "&cent;"],
+    ["\xA3", "&pound;"],
+    ["\xA5", "&yen;"],
+    ["\u20AC", "&euro;"],
+    ["\xA9", "&copy;"],
+    ["\xAE", "&reg;"]
+  ];
+  var ATTR_ENTITIES = [
     ["<", "&lt;"],
     [">", "&gt;"],
     ['"', "&quot;"],
@@ -48,42 +61,48 @@ var dom = (() => {
     }
     return -1;
   }
-  function encodeFunc(str) {
+  function encodeStr(str) {
     return encodeURIComponent(str);
   }
-  function decodeFunc(str) {
+  function decodeStr(str) {
     return decodeURIComponent(str);
   }
-  function escapeFunc(str) {
-    for (let i = 0; i < ENTITIES.length; i++) {
-      str = str.replace(new RegExp(ENTITIES[i][0], "g"), ENTITIES[i][1]);
+  function escapeStr(str) {
+    for (let i = 0; i < HTML_ENTITIES.length; i++) {
+      str = str.replace(new RegExp(HTML_ENTITIES[i][0], "g"), HTML_ENTITIES[i][1]);
     }
     return str;
   }
-  function unescapeFunc(str) {
-    for (let i = ENTITIES.length - 1; i >= 0; i--) {
-      str = str.replace(new RegExp(ENTITIES[i][1], "g"), ENTITIES[i][0]);
+  function unescapeStr(str) {
+    for (let i = HTML_ENTITIES.length - 1; i >= 0; i--) {
+      str = str.replace(new RegExp(HTML_ENTITIES[i][1], "g"), HTML_ENTITIES[i][0]);
+    }
+    return str;
+  }
+  function escapeAttr(str) {
+    for (let i = 0; i < ATTR_ENTITIES.length; i++) {
+      str = str.replace(new RegExp(ATTR_ENTITIES[i][0], "g"), ATTR_ENTITIES[i][1]);
     }
     return str;
   }
   function convertComments(str) {
     return str.replace(/<!--([\s\S]*?)-->/g, function(...args) {
-      return `<!-->${encodeFunc(args[1])}</!-->`;
+      return `<!-->${encodeStr(args[1])}</!-->`;
     });
   }
   function encodeScripts(str) {
     return str.replace(/(<script(?:[\s\S]*?)>)([\s\S]*?)(<\/script>)/g, function(...args) {
-      return `${args[1]}${encodeFunc(args[2])}${args[3]}`;
+      return `${args[1]}${encodeStr(args[2])}${args[3]}`;
     });
   }
   function encodeContents(str) {
     return str.replace(/(>)([\s\S]*?)(<)/g, function(...args) {
-      return `${args[1]}${escapeFunc(args[2])}${args[3]}`;
+      return `${args[1]}${escapeStr(args[2])}${args[3]}`;
     });
   }
   function encodeAttributes(str) {
     function func(...args) {
-      return `=${encodeFunc(args[1])} `;
+      return `=${encodeStr(args[1])} `;
     }
     return str.replace(/\='([^'>]*?)'/g, func).replace(/\="([^">]*?)"/g, func);
   }
@@ -102,7 +121,7 @@ var dom = (() => {
       let [key, value] = arr[i].split("=");
       if (key.length > 0) {
         if (typeof value === "string" && value.length > 0) {
-          result.attributes[key] = decodeFunc(value);
+          result.attributes[key] = decodeStr(value);
         } else {
           result.attributes[key] = true;
         }
@@ -131,7 +150,7 @@ var dom = (() => {
           // isClosing: false,
           tag: null,
           closer: null,
-          content: unescapeFunc(content),
+          content: unescapeStr(content),
           attributes: {},
           children: []
         };
@@ -151,7 +170,7 @@ var dom = (() => {
           if (["script", "!--"].indexOf(children[i].tag) > -1) {
             for (let j = 0; j < children[i].children.length; j++) {
               if (isText(children[i].children[j])) {
-                children[i].children[j].content = decodeFunc(children[i].children[j].content);
+                children[i].children[j].content = decodeStr(children[i].children[j].content);
               }
             }
           }
@@ -184,7 +203,7 @@ var dom = (() => {
     let result = "";
     for (const [k, v] of Object.entries(obj)) {
       if (typeof v === "string") {
-        result += ` ${k}="${escapeFunc(v)}"`;
+        result += ` ${k}="${escapeAttr(v)}"`;
       } else if (v === true) {
         result += ` ${k}`;
       }

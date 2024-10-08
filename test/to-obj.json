@@ -20,11 +20,25 @@
       "attributes": {},
       "children": [
         {
+          "tag": null,
+          "closer": null,
+          "content": "  ",
+          "attributes": {},
+          "children": []
+        },
+        {
           "tag": "head",
           "closer": null,
           "content": null,
           "attributes": {},
           "children": [
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
             {
               "tag": "meta",
               "closer": " /",
@@ -35,6 +49,13 @@
               "children": []
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "meta",
               "closer": " /",
               "content": null,
@@ -42,6 +63,13 @@
                 "name": "viewport",
                 "content": "width=device-width, initial-scale=1.0"
               },
+              "children": []
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
               "children": []
             },
             {
@@ -60,6 +88,13 @@
               ]
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "style",
               "closer": null,
               "content": null,
@@ -68,13 +103,27 @@
                 {
                   "tag": null,
                   "closer": null,
-                  "content": "html,\n      body {\n        width: 100%;\n        height: 100%;\n        margin: 0;\n        padding: 0;\n      }\n      body {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n      }",
+                  "content": "      html,\n      body {\n        width: 100%;\n        height: 100%;\n        margin: 0;\n        padding: 0;\n      }\n      body {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n      }\n    ",
                   "attributes": {},
                   "children": []
                 }
               ]
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "  ",
+              "attributes": {},
+              "children": []
             }
           ]
+        },
+        {
+          "tag": null,
+          "closer": null,
+          "content": "  ",
+          "attributes": {},
+          "children": []
         },
         {
           "tag": "body",
@@ -82,6 +131,13 @@
           "content": null,
           "attributes": {},
           "children": [
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
             {
               "tag": "!--",
               "closer": "--",
@@ -96,6 +152,13 @@
                   "children": []
                 }
               ]
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
             },
             {
               "tag": "!--",
@@ -113,6 +176,13 @@
               ]
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "!--",
               "closer": "--",
               "content": null,
@@ -128,6 +198,13 @@
               ]
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "div",
               "closer": null,
               "content": null,
@@ -139,7 +216,7 @@
                 {
                   "tag": null,
                   "closer": null,
-                  "content": "LINE 1",
+                  "content": "      LINE 1\n      ",
                   "attributes": {},
                   "children": []
                 },
@@ -161,11 +238,18 @@
                 {
                   "tag": null,
                   "closer": null,
-                  "content": "LINE 3",
+                  "content": "      LINE 3\n    ",
                   "attributes": {},
                   "children": []
                 }
               ]
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
             },
             {
               "tag": "!--",
@@ -183,11 +267,25 @@
               ]
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "div",
               "closer": null,
               "content": null,
               "attributes": {},
               "children": [
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "      ",
+                  "attributes": {},
+                  "children": []
+                },
                 {
                   "tag": "!--",
                   "closer": "--",
@@ -204,12 +302,26 @@
                   ]
                 },
                 {
+                  "tag": null,
+                  "closer": null,
+                  "content": "      ",
+                  "attributes": {},
+                  "children": []
+                },
+                {
                   "tag": "img",
                   "closer": " /",
                   "content": null,
                   "attributes": {
                     "src": "http://"
                   },
+                  "children": []
+                },
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "      ",
+                  "attributes": {},
                   "children": []
                 },
                 {
@@ -228,6 +340,13 @@
                   ]
                 },
                 {
+                  "tag": null,
+                  "closer": null,
+                  "content": "      ",
+                  "attributes": {},
+                  "children": []
+                },
+                {
                   "tag": "img",
                   "closer": " /",
                   "content": null,
@@ -235,8 +354,22 @@
                     "src": "http://"
                   },
                   "children": []
+                },
+                {
+                  "tag": null,
+                  "closer": null,
+                  "content": "    ",
+                  "attributes": {},
+                  "children": []
                 }
               ]
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
             },
             {
               "tag": "!--",
@@ -256,7 +389,7 @@
             {
               "tag": null,
               "closer": null,
-              "content": "LINE 1 =>",
+              "content": "    LINE 1 =>\n    ",
               "attributes": {},
               "children": []
             },
@@ -270,7 +403,7 @@
             {
               "tag": null,
               "closer": null,
-              "content": "LINE 2",
+              "content": "    LINE 2 ",
               "attributes": {},
               "children": []
             },
@@ -286,7 +419,7 @@
             {
               "tag": null,
               "closer": null,
-              "content": "LINE 3 =&gt;",
+              "content": "    LINE 3 =&gt; \n\n    ",
               "attributes": {},
               "children": []
             },
@@ -304,6 +437,13 @@
                   "children": []
                 }
               ]
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
             },
             {
               "tag": "p",
@@ -324,6 +464,13 @@
               ]
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "!--",
               "closer": "--",
               "content": null,
@@ -339,14 +486,28 @@
               ]
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "img",
               "closer": " /",
               "content": null,
               "attributes": {
                 "src": true,
-                "alt": true,
+                "alt": "&nbsp;&nbsp;&nbsp;no break space&nbsp;&nbsp;&nbsp;",
                 "control": true
               },
+              "children": []
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
               "children": []
             },
             {
@@ -361,6 +522,13 @@
               "children": []
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "img",
               "closer": " /",
               "content": null,
@@ -369,6 +537,13 @@
                 "alt": true,
                 "control": true
               },
+              "children": []
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
               "children": []
             },
             {
@@ -387,12 +562,26 @@
               ]
             },
             {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
+              "children": []
+            },
+            {
               "tag": "script",
               "closer": null,
               "content": null,
               "attributes": {
                 "src": "../dist/module.js"
               },
+              "children": []
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "    ",
+              "attributes": {},
               "children": []
             },
             {
@@ -409,6 +598,13 @@
                   "children": []
                 }
               ]
+            },
+            {
+              "tag": null,
+              "closer": null,
+              "content": "  ",
+              "attributes": {},
+              "children": []
             }
           ]
         }

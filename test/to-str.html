@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,&nbsp;initial-scale=1.0" />
   <title>index.html</title>
   <style>
     html,
@@ -22,17 +22,22 @@
   </style>
 </head>
 
-<body><!-- Test comment --><!--
+<body> <!-- Test comment --> <!--
       <div id="a1">
         <div id="a2">
           <div id="a3"></div>
         </div>
       </div> 
-    --><!-- test node -->
-  <div id="test-id" class="test-class">LINE 1<p>LINE 2</p>LINE 3</div><!-- Test image -->
-  <div><!-- Img without closing tag --><img src="http://" /><!-- Img with closing tag --><img src="http://" /></div><!-- Test escape -->LINE 1 =><br />LINE 2
-  <= <br />LINE 3 =&gt;<!-- Text attribute escape -->
-  <p id="p1" attr="&quot;Esacaped text&quot;">Link</p><!-- Test attributes --><img src alt control /><img src alt control /><img src alt control /><!-- Test scripts -->
+    --> <!-- test node -->
+  <div id="test-id" class="test-class"> LINE 1
+    <p>LINE 2</p> LINE 3
+  </div> <!-- Test image -->
+  <div> <!-- Img without closing tag --> <img src="http://" /> <!-- Img with closing tag --> <img src="http://" /> </div> <!-- Test escape --> LINE 1 =>
+  <br /> LINE 2
+  <= <br /> LINE 3 =&gt;
+
+  <!-- Text attribute escape -->
+  <p id="p1" attr="&quot;Esacaped&nbsp;text&quot;">Link</p> <!-- Test attributes --> <img src alt="&amp;nbsp;&amp;nbsp;&amp;nbsp;no&nbsp;break&nbsp;space&amp;nbsp;&amp;nbsp;&amp;nbsp;" control /> <img src alt control /> <img src alt control /> <!-- Test scripts -->
   <script src="../dist/module.js"></script>
   <script>
     console.log(1 < 2);
